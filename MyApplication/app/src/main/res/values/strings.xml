@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JoystickForDrone</string>
+    <string name="joystickgauche">Gauche : </string>
+    <string name="joystickdroit">Droite : </string>
+    <string name="axeX">Axe X: </string>
+    <string name="axeY">Axe Y: </string>
+</resources>
