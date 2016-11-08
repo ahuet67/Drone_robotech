@@ -60,7 +60,7 @@ public class SignalPPM {
         }
         return -1;
     }
-    public int arretForcé() {
+    public int arretForce() {
         try {
             state = false;
             envoisignalppm.cancel(true);
