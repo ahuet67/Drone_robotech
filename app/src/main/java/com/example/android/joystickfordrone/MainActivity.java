@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements MyJoystickView.My
     }
 
     @Override
+    protected void OnStop() {
+        super.onStop();
+        if(signalppm instanceof SignalPPM) signalppm.abandonFocus();
+    }
+
+    @Override
     public void onJoystickMoved(float xPourcent, float yPourcent, int source) {
         Log.d("Main Method","X pourcent :"+xPourcent+" Y pourcent "+yPourcent);
         progressbargaucheX.setProgress((int) xPourcent);
