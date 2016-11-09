@@ -25,6 +25,18 @@ public class SignalPPM {
 
     public SignalPPM(Context c) {
         audiomanager = (AudioManager)c.getSystemService(Context.AUDIO_SERVICE);
+
+        int audiofocus = audiomanager.requestAudioFocus(AudioManager.OnAudioFocusChangeListener,AudioManager.STREAM_MUSIC,AudioManager.AUTOFOCUS_GAIN_TRANSIENT_EXCLUSIVE);
+        if(audiofocus == AudioManager.AUDIOFOCUS_REQUEST_FAILED) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Erreur");
+            alert.setMessage("AUDIOFOCUS NOT GRANTED" + audiofocus);
+            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+            });
+            alert.show();
+        }
         audiomanager.setStreamVolume(AudioManager.STREAM_MUSIC,audiomanager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),0);
         for(int i=0;i<channels.size();i++)
             channels.add((float)0.68181818);//Valeurs nulles (pas de mouvement du joystick quoi
